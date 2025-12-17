@@ -19,3 +19,20 @@ int token_count(const char *input_str, const char *delim)
 
 	if (*input_str == '\0')
 		return (0);
+    
+    copy = malloc(strlen(input_str) + 1);
+	if (copy == NULL)
+		return (0);
+
+	strcpy(copy, input_str);
+
+	tok = strtok(copy, delim);
+	while (tok != NULL)
+	{
+		count++;
+		tok = strtok(NULL, delim);
+	}
+
+	free(copy);
+	return (count);
+}
