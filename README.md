@@ -18,6 +18,8 @@ This shell provides a simple command-line interface where users can execute comm
 
 File | Description | 
 ----------|-------------|
+strip_newline.c | program that removes the trailing newline character from a string.
+executor.c | program that execute a command using fork and execve.
 
 ## Function we use
 
