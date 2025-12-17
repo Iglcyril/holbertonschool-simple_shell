@@ -1,14 +1,15 @@
 #include "shell.h"
-#include <stdlib.h>
-#include <string.h>
-
+/**
+ * split_string - splits a string into tokens
+ * @input_str: string to split
+ * @delim: delimiter characters
+ *
+ * Return: NULL-terminated array of tokens, or NULL on failure
+ */
 char **split_string(char *input_str, char *delim)
 {
+	char **tokens, *copy, *tok, *clean;
 	int count, i;
-	char **tokens;
-	char *copy;
-	char *tok;
-	char *clean;
 
 	if (input_str == NULL || delim == NULL || *input_str == '\0' || *delim == '\0')
 		return (NULL);
@@ -29,31 +30,21 @@ char **split_string(char *input_str, char *delim)
 	}
 	strcpy(copy, input_str);
 
-	i = 0;
-	tok = strtok(copy, delim);
-	while (tok != NULL)
+	for (i = 0, tok = strtok(copy, delim); tok; tok = strtok(NULL, delim), i++)
 	{
 		clean = clean_quotes(tok);
-
 		tokens[i] = malloc(strlen(clean) + 1);
 		if (tokens[i] == NULL)
 		{
-			while (i > 0)
-			{
-				i--;
-				free(tokens[i]);
-			}
-			free(tokens);
+			tokens[i] = NULL;
+			free_array(tokens);
 			free(copy);
 			return (NULL);
 		}
 		strcpy(tokens[i], clean);
-
-		i++;
-		tok = strtok(NULL, delim);
 	}
-	tokens[i] = NULL;
 
+	tokens[i] = NULL;
 	free(copy);
 	return (tokens);
 }
