@@ -8,6 +8,7 @@
 int main(int argc, char **argv)
 {
 	char *input_buffer;
+	char *cmd;
 	ssize_t bytes_read;
 	size_t buffer_capacity;
 	int is_interactive;
