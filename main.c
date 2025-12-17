@@ -2,12 +2,6 @@
 
 char *shell_name = "./hsh";
 
-/**
- * main - simple shell (task 0.1)
- * @argc: argument count
- * @argv: argument vector
- * Return: exit status
- */
 int main(int argc, char **argv)
 {
 	char *input_buffer = NULL;
@@ -15,8 +9,7 @@ int main(int argc, char **argv)
 	ssize_t bytes_read;
 	int is_interactive;
 	int last_exit_status = 0;
-	char *cmd;
-	char *p;
+	char **parsed_tokens;
 
 	(void)argc;
 	shell_name = argv[0];
@@ -37,23 +30,16 @@ int main(int argc, char **argv)
 		}
 
 		strip_newline(input_buffer, &bytes_read);
-
-		/* skip leading spaces/tabs */
-		cmd = input_buffer;
-		while (*cmd == ' ' || *cmd == '\t')
-			cmd++;
-
-		/* empty line -> reprompt */
-		if (*cmd == '\0')
+		if (*input_buffer == '\0')
 			continue;
 
-		/* task 0.1: keep only ONE word (no args) */
-		p = cmd;
-		while (*p && *p != ' ' && *p != '\t')
-			p++;
-		*p = '\0';
+		parsed_tokens = split_string(input_buffer, " \t\n");
+		if (parsed_tokens == NULL)
+			continue;
 
-		last_exit_status = exec_cmd(cmd);
+		last_exit_status = exec_cmd(parsed_tokens);
+
+		free_array(parsed_tokens);
 	}
 
 	free(input_buffer);
