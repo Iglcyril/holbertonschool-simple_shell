@@ -1,0 +1,40 @@
+#include "shell.h"
+/**
+* main - Entry point for the simple shell program.
+* @argc: Argument count.
+* @argv: Argument vector.
+* Return: Always 0.
+*/
+int main(int argc, char **argv)
+{
+	char *input_buffer;
+	ssize_t bytes_read;
+	size_t buffer_capacity;
+	int is_interactive;
+
+	input_buffer = NULL;
+	buffer_capacity = 0;
+	is_interactive = isatty(STDIN_FILENO);
+
+	(void)argc;
+	(void)argv;
+
+	while (1)
+	{
+		if (is_interactive)
+			write(STDOUT_FILENO, "Holberton", 9);
+
+		bytes_read = getline(&input_buffer, &buffer_capacity, stdin);
+		if (bytes_read == -1)
+			break;
+
+		strip_newline(input_buffer, &bytes_read);
+
+		if (input_buffer[0] == '\0')
+			continue;
+
+		exec_cmd(input_buffer);
+	}
+	free(input_buffer);
+	return (0);
+}
