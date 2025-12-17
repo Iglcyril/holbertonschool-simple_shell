@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		if (is_interactive)
-			write(STDOUT_FILENO, "Holberton", 9);
+			write(STDOUT_FILENO, "#Holberton$ ", 12);
 
 		bytes_read = getline(&input_buffer, &buffer_capacity, stdin);
 		if (bytes_read == -1)
@@ -31,6 +31,12 @@ int main(int argc, char **argv)
 		strip_newline(input_buffer, &bytes_read);
 
 		if (input_buffer[0] == '\0')
+			continue;
+
+		while (*input_buffer == ' ')
+			input_buffer++;
+
+		if (*input_buffer == '\0')
 			continue;
 
 		exec_cmd(input_buffer);
