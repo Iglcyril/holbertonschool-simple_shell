@@ -14,8 +14,8 @@ if (*str_len <= 0)
 	return;
 
 if (input_str[*str_len - 1] == '\n')
-	{
-		input_str[*str_len - 1] = '\0';
-		*str_len = *str_len -1;
-	}
+{
+	input_str[*str_len - 1] = '\0';
+		*str_len = *str_len - 1;
+}
 }

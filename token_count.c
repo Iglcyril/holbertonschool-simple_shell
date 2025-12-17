@@ -3,11 +3,10 @@
 #include <stdlib.h>
 
 /**
-*token count - Count tokens in a string
+*token_count - Count tokens in a string
 *@input_str: String to analyze
 *@delim: Delimiter characters
-*
-*
+* Return: Number of tokens found
 */
 int token_count(const char *input_str, const char *delim)
 {
@@ -19,8 +18,8 @@ int token_count(const char *input_str, const char *delim)
 
 	if (*input_str == '\0')
 		return (0);
-    
-    copy = malloc(strlen(input_str) + 1);
+
+	copy = malloc(strlen(input_str) + 1);
 	if (copy == NULL)
 		return (0);
 
