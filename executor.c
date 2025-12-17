@@ -27,6 +27,7 @@ int exec_cmd(char *cmd)
 	}
 	if (child_process == 0)
 	{
+		
 		if (execve(cmd, args, environ) == -1)
 		{
 			perror(cmd);
