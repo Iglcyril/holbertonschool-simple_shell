@@ -31,20 +31,22 @@ int main(int argc, char **argv)
 		strip_newline(input_buffer, &bytes_read);
 
 		
-		while (*input_buffer == ' ')
-			input_buffer++;
+		cmd = input_buffer;
 
-		bytes_read = strlen(input_buffer);
-		while (bytes_read > 0 && input_buffer[bytes_read - 1] == ' ')
+		while (*cmd == ' ')
+			cmd++;
+
+		bytes_read = strlen(cmd);
+		while (bytes_read > 0 && cmd[bytes_read - 1] == ' ')
 		{
-			input_buffer[bytes_read - 1] = '\0';
+			cmd[bytes_read - 1] = '\0';
 			bytes_read--;
 		}
 
-		if (*input_buffer == '\0')
+		if (*cmd == '\0')
 			continue;
 
-		exec_cmd(input_buffer);
+		exec_cmd(cmd);
 	}
 	free(input_buffer);
 	return (0);
