@@ -20,6 +20,10 @@ File | Description |
 ----------|-------------|
 strip_newline.c | program that removes the trailing newline character from a string.
 executor.c | program that execute a command using fork and execve.
+free_array.c | program that frees a NULL-terminated array of strings
+get_env_value.c | program that returns the value of an environment variable
+clean_quote.c | program that removes surrounding quotes from a token if present.
+token_count | program Count tokens in a string
 
 ## Function we use
 
