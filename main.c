@@ -23,7 +23,7 @@ int main(int argc, char **argv)
 	while (1)
 	{
 		if (is_interactive)
-			write(STDOUT_FILENO, "#Holberton$ ", 12);
+			write(STDOUT_FILENO, "#cisfun$ ", 10);
 
 		bytes_read = getline(&input_buffer, &buffer_capacity, stdin);
 		if (bytes_read == -1)
