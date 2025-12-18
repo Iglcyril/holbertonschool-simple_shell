@@ -37,8 +37,13 @@ int main(int argc, char **argv)
 		if (parsed_tokens == NULL)
 			continue;
 
-		last_exit_status = exec_cmd(parsed_tokens);
+		if (check_builtin(parsed_tokens, &last_exit_status, input_buffer))
+		{
+    		free_array(parsed_tokens);
+    		continue;
+		}	
 
+		last_exit_status = exec_cmd(parsed_tokens);
 		free_array(parsed_tokens);
 	}
 
