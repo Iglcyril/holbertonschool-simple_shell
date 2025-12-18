@@ -10,6 +10,11 @@ char *build_path(char *dir_path, char *cmd_name)
 	char *complet_path;
 	size_t total_len;
 
+	if (dir_path == NULL)
+		return (NULL);
+	if (cmd_name == NULL)
+		return (NULL);
+
 	total_len = strlen(dir_path) + strlen(cmd_name);
 	complet_path = malloc(total_len);
 
