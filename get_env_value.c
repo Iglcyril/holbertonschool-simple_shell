@@ -9,19 +9,20 @@
  */
 char *get_env_value(const char *name, char **envp)
 {
-	size_t nlen;
+	size_t len;
 	int i;
+	char *value;
 
-	if (name == NULL || *name == '\0' || envp == NULL)
+	if (name == NULL || envp == NULL)
 		return (NULL);
 
-	nlen = strlen(name);
+	len = strlen(name);
 
 	for (i = 0; envp[i] != NULL; i++)
 	{
 		
-		if (strncmp(environ[i], name, nlen) == 0 && environ[i][nlen] == '=')
-			return (environ[i] + nlen + 1);
+		if (strncmp(envp[i], name, len) == 0 && envp[i][len] == '=')
+			return (envp[i] + len + 1);
 	}
 
 	return (NULL);
