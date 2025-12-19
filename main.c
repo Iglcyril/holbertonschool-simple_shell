@@ -43,6 +43,13 @@ int main(int argc, char **argv, char **envp)
 		}
 
 		last_exit_status = find_and_execute(parsed_tokens, envp, prog_name);
+
+		if (last_exit_status == 127)
+		{
+			fprintf(stderr, "%s: %u: %s: not found\n",
+				prog_name, line_number, parsed_tokens[0]);
+		}
+		
 		free_array(parsed_tokens);
 	}
 

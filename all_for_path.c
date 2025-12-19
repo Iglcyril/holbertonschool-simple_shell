@@ -121,7 +121,6 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name)
 	if (cmd_args == NULL || cmd_args[0] == NULL)
 		return (0);
 
-	/* Direct paths */
 	if (cmd_args[0][0] == '/' ||
 	    (cmd_args[0][0] == '.' && cmd_args[0][1] == '/') ||
 	    (cmd_args[0][0] == '.' && cmd_args[0][1] == '.' &&
@@ -129,13 +128,16 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name)
 		return (exec_direct(cmd_args, envp, prog_name));
 
 	path_env = get_env_value("PATH", envp);
-	if (path_env == NULL)
-	{
-		fprintf(stderr, "%s: %s: command not found\n",
-			prog_name, cmd_args[0]);
-		return (127);
-	}
+	path_env = get_env_value("PATH", envp);
 
+
+	if (path_env == NULL || path_env[0] == '\0')
+	{
+		if (path_env != NULL)
+			free(path_env);
+			return (127);
+	}
+	
 	path_dirs = split_string(path_env, ":");
 	free(path_env);
 
