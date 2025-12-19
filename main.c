@@ -1,5 +1,13 @@
 #include "shell.h"
 
+/**
+ * main - Entry point for simple shell
+ * @argc: argument count
+ * @argv: argument vector
+ * @envp: environment
+ *
+ * Return: last exit status
+ */
 int main(int argc, char **argv, char **envp)
 {
 	char *input_buffer = NULL;
@@ -9,6 +17,7 @@ int main(int argc, char **argv, char **envp)
 	int last_exit_status = 0;
 	char **parsed_tokens;
 	char *prog_name;
+	unsigned int line_number = 0;
 
 	(void)argc;
 	prog_name = argv[0];
@@ -27,6 +36,8 @@ int main(int argc, char **argv, char **envp)
 			break;
 		}
 
+		line_number++;
+
 		strip_newline(input_buffer, &bytes_read);
 		if (*input_buffer == '\0')
 			continue;
@@ -44,12 +55,17 @@ int main(int argc, char **argv, char **envp)
 
 		last_exit_status = find_and_execute(parsed_tokens, envp, prog_name);
 
-		if (last_exit_status == 127)
+		if (last_exit_status == 126)
+		{
+			fprintf(stderr, "%s: %u: %s: Permission denied\n",
+				prog_name, line_number, parsed_tokens[0]);
+		}
+		else if (last_exit_status == 127)
 		{
 			fprintf(stderr, "%s: %u: %s: not found\n",
 				prog_name, line_number, parsed_tokens[0]);
 		}
-		
+
 		free_array(parsed_tokens);
 	}
 

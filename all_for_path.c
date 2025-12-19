@@ -48,6 +48,8 @@ int search_in_path(char **path_dirs, char **cmd_args,
 	char *original_cmd;
 	int i, result;
 
+	(void)prog_name;
+
 	if (path_dirs == NULL || cmd_args == NULL || cmd_args[0] == NULL)
 		return (127);
 
@@ -88,18 +90,10 @@ int exec_direct(char **cmd_args, char **envp, char *prog_name)
 		return (127);
 
 	if (access(cmd_args[0], F_OK) == -1)
-	{
-		fprintf(stderr, "%s: %s: command not found\n",
-			prog_name, cmd_args[0]);
 		return (127);
-	}
 
 	if (access(cmd_args[0], X_OK) == -1)
-	{
-		fprintf(stderr, "%s: %s: Permission denied\n",
-			prog_name, cmd_args[0]);
 		return (126);
-	}
 
 	return (exec_cmd(cmd_args, envp, prog_name));
 }
@@ -121,6 +115,7 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name)
 	if (cmd_args == NULL || cmd_args[0] == NULL)
 		return (0);
 
+	/* Direct paths */
 	if (cmd_args[0][0] == '/' ||
 	    (cmd_args[0][0] == '.' && cmd_args[0][1] == '/') ||
 	    (cmd_args[0][0] == '.' && cmd_args[0][1] == '.' &&
@@ -128,16 +123,14 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name)
 		return (exec_direct(cmd_args, envp, prog_name));
 
 	path_env = get_env_value("PATH", envp);
-	path_env = get_env_value("PATH", envp);
 
-
+	/* PATH missing or empty => no search */
 	if (path_env == NULL || path_env[0] == '\0')
 	{
-		if (path_env != NULL)
-			free(path_env);
-			return (127);
+		free(path_env);
+		return (127);
 	}
-	
+
 	path_dirs = split_string(path_env, ":");
 	free(path_env);
 
@@ -145,14 +138,7 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name)
 		return (127);
 
 	result = search_in_path(path_dirs, cmd_args, envp, prog_name);
-
-	if (result == 127)
-		fprintf(stderr, "%s: %s: command not found\n",
-			prog_name, cmd_args[0]);
-	else if (result == 126)
-		fprintf(stderr, "%s: %s: Permission denied\n",
-			prog_name, cmd_args[0]);
-
 	free_array(path_dirs);
+
 	return (result);
 }
