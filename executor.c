@@ -27,9 +27,11 @@ int exec_cmd(char **argv, char **envp, char *prog_name)
 
 	if (pid == 0)
 	{
-		execve(argv[0], argv, envp);
-		perror(argv[0]);
-		exit(127);
+		if (execve(argv[0], argv, envp) == -1)
+		{
+			perror(prog_name);
+			exit(127);
+		}
 	}
 
 	if (waitpid(pid, &status, 0) == -1)

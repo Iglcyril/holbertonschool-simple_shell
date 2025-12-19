@@ -42,7 +42,7 @@ int main(int argc, char **argv, char **envp)
 			continue;
 		}
 
-		last_exit_status = exec_cmd(parsed_tokens, envp, prog_name);
+		last_exit_status = find_and_execute(parsed_tokens, envp, prog_name);
 		free_array(parsed_tokens);
 	}
 
