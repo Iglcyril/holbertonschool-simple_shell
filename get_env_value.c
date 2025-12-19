@@ -22,7 +22,10 @@ char *get_env_value(const char *name, char **envp)
 	{
 		
 		if (strncmp(envp[i], name, len) == 0 && envp[i][len] == '=')
-			return (envp[i] + len + 1);
+		{
+			value = strdup(envp[i] + len + 1);
+			return (value);
+		}
 	}
 
 	return (NULL);
