@@ -1,28 +1,26 @@
-#include <string.h>
-
-extern char **environ;
+#include "shell.h"
 
 /**
  * get_env_value - returns the value of an environment variable
  * @name: variable name (example: "PATH")
+ * @envp: environment array
  *
- * Return: pointer to the value inside environ, or NULL if not found
+ * Return: pointer to the value inside envp, or NULL if not found
  */
-char *get_env_value(const char *name)
+char *get_env_value(const char *name, char **envp)
 {
 	size_t nlen;
 	int i;
 
-	if (name == NULL || *name == '\0')
+	if (name == NULL || *name == '\0' || envp == NULL)
 		return (NULL);
 
 	nlen = strlen(name);
 
-	for (i = 0; environ[i] != NULL; i++)
+	for (i = 0; envp[i] != NULL; i++)
 	{
-		
-		if (strncmp(environ[i], name, nlen) == 0 && environ[i][nlen] == '=')
-			return (environ[i] + nlen + 1);
+		if (strncmp(envp[i], name, nlen) == 0 && envp[i][nlen] == '=')
+			return (envp[i] + nlen + 1);
 	}
 
 	return (NULL);

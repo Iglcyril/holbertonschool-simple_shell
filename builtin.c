@@ -1,32 +1,27 @@
 #include "shell.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 /**
  * builtin_env - prints environment variables
+ * @envp: environment array
  */
-void builtin_env(void)
+void builtin_env(char **envp)
 {
-	int env_index;
+	int i;
 
-	env_index = 0;
-	while (environ[env_index] != NULL)
-	{
-		printf("%s\n", environ[env_index]);
-		env_index++;
-	}
+	if (envp == NULL)
+		return;
+
+	for (i = 0; envp[i] != NULL; i++)
+		printf("%s\n", envp[i]);
 }
 
 /**
  * builtin_exit - exits the shell
- * @cmd_tokens: token array to free
  * @exit_status: pointer to last exit status
  * @input_line: input buffer to free
  */
-void builtin_exit(char **cmd_tokens, int *exit_status, char *input_line)
+void builtin_exit(int *exit_status, char *input_line)
 {
-	free_array(cmd_tokens);
 	free(input_line);
 	exit(*exit_status);
 }
@@ -36,23 +31,25 @@ void builtin_exit(char **cmd_tokens, int *exit_status, char *input_line)
  * @cmd_tokens: token array (argv)
  * @exit_status: pointer to last exit status
  * @input_line: input buffer (needed for exit cleanup)
+ * @envp: environment array
  *
  * Return: 1 if builtin executed, 0 otherwise
  */
-int check_builtin(char **cmd_tokens, int *exit_status, char *input_line)
+int check_builtin(char **cmd_tokens, int *exit_status,
+		  char *input_line, char **envp)
 {
 	if (cmd_tokens == NULL || cmd_tokens[0] == NULL)
 		return (0);
 
 	if (strcmp(cmd_tokens[0], "exit") == 0)
 	{
-		builtin_exit(cmd_tokens, exit_status, input_line);
+		builtin_exit(exit_status, input_line);
 		return (1);
 	}
 
 	if (strcmp(cmd_tokens[0], "env") == 0)
 	{
-		builtin_env();
+		builtin_env(envp);
 		return (1);
 	}
 

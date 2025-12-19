@@ -1,8 +1,6 @@
 #include "shell.h"
 
-char *shell_name = "./hsh";
-
-int main(int argc, char **argv)
+int main(int argc, char **argv, char **envp)
 {
 	char *input_buffer = NULL;
 	size_t buffer_capacity = 0;
@@ -10,10 +8,10 @@ int main(int argc, char **argv)
 	int is_interactive;
 	int last_exit_status = 0;
 	char **parsed_tokens;
+	char *prog_name;
 
 	(void)argc;
-	shell_name = argv[0];
-
+	prog_name = argv[0];
 	is_interactive = isatty(STDIN_FILENO);
 
 	while (1)
@@ -37,13 +35,14 @@ int main(int argc, char **argv)
 		if (parsed_tokens == NULL)
 			continue;
 
-		if (check_builtin(parsed_tokens, &last_exit_status, input_buffer))
+		if (check_builtin(parsed_tokens, &last_exit_status,
+				  input_buffer, envp))
 		{
-    		free_array(parsed_tokens);
-    		continue;
-		}	
+			free_array(parsed_tokens);
+			continue;
+		}
 
-		last_exit_status = exec_cmd(parsed_tokens);
+		last_exit_status = exec_cmd(parsed_tokens, envp, prog_name);
 		free_array(parsed_tokens);
 	}
 
