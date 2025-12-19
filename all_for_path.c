@@ -9,6 +9,7 @@ char *build_path(char *dir_path, char *cmd_name)
 {
 	char *complet_path;
 	size_t total_len;
+	size_t dir_len;
 
 	if (dir_path == NULL)
 		return (NULL);
@@ -18,15 +19,15 @@ char *build_path(char *dir_path, char *cmd_name)
 	total_len = strlen(dir_path) + strlen(cmd_name);
 	complet_path = malloc(total_len);
 
-	if (complete_path == NULL)
+	if (complet_path == NULL)
 		return (NULL);
 
-	strcpy(complete_path, dir_path);
+	strcpy(complet_path, dir_path);
 
 	dir_len = strlen(dir_path);
 	if (dir_path[dir_len - 1] != '/')
 	{
-		strcat(complete_path, "/");
+		strcat(complet_path, "/");
 	}
 
 	strcat(complet_path, cmd_name);
