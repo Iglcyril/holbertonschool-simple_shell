@@ -19,8 +19,9 @@ char *get_env_value(const char *name, char **envp)
 
 	for (i = 0; envp[i] != NULL; i++)
 	{
-		if (strncmp(envp[i], name, nlen) == 0 && envp[i][nlen] == '=')
-			return (envp[i] + nlen + 1);
+		
+		if (strncmp(environ[i], name, nlen) == 0 && environ[i][nlen] == '=')
+			return (environ[i] + nlen + 1);
 	}
 
 	return (NULL);
