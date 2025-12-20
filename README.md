@@ -78,6 +78,11 @@ int token_count(const char *input_str, const char *delim);
 
 ![man_shell](https://github.com/Iglcyril/holbertonschool-simple_shell/blob/dev/man_shell)
 
+To see the manual :
+```bash
+man ./man_shell
+```
+
 
 ## Compilation
 ``` 
