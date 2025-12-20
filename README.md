@@ -72,6 +72,7 @@ int token_count(const char *input_str, const char *delim);
 
 ```
 ## Flowchart
+<img width="1417" height="1366" alt="image" src="https://github.com/user-attachments/assets/009f0898-f8c0-4023-a6ae-7a74eef19e65" />
 
 
 ## Man simple shell
