@@ -120,7 +120,31 @@ backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp  vscode-remote
 ($) exit
 @Iglcyril ➜ /workspaces/holbertonschool-simple_shell (dev) $
 ```
+## Valgrind test
 
+```
+==2226== 
+==2226== Process terminating with default action of signal 2 (SIGINT)
+==2226==    at 0x497CA91: read (read.c:26)
+==2226==    by 0x48F37A4: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:517)
+==2226==    by 0x48E7C9E: getdelim (iogetdelim.c:120)
+==2226==    by 0x109CA0: main (in /workspaces/holbertonschool-simple_shell/hsh)
+==2226== 
+==2226== HEAP SUMMARY:
+==2226==     in use at exit: 1,144 bytes in 2 blocks
+==2226==   total heap usage: 180 allocs, 178 frees, 15,211 bytes allocated
+==2226== 
+==2226== LEAK SUMMARY:
+==2226==    definitely lost: 0 bytes in 0 blocks
+==2226==    indirectly lost: 0 bytes in 0 blocks
+==2226==      possibly lost: 0 bytes in 0 blocks
+==2226==    still reachable: 1,144 bytes in 2 blocks
+==2226==         suppressed: 0 bytes in 0 blocks
+==2226== Rerun with --leak-check=full to see details of leaked memory
+==2226== 
+==2226== For lists of detected and suppressed errors, rerun with: -s
+==2226== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+```
 ## Author
 
 ```
