@@ -1,12 +1,11 @@
 #include "shell.h"
 
 /**
- * executor - Execute a command using fork and execve.
- * @argv: array of strings (command + args), NULL-terminated
- * @envp: environment array
- * @prog_name: program name (argv[0])
- *
- * Return: exit status, or -1 on failure
+ * exec_cmd - Execute command using execve
+ * @argv: command arguments
+ * @envp: environment variables
+ * @prog_name: shell program name for error messages
+ * Return: exit status of the command
  */
 int exec_cmd(char **argv, char **envp, char *prog_name)
 {

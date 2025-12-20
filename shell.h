@@ -15,7 +15,7 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name);
 
 void builtin_env(char **envp);
 void builtin_exit(int *exit_status, char *input_line);
-int check_builtin(char **cmd_tokens, int *exit_status,char *input_line, char **envp);
+int check_builtin(char **cmd_tokens, int *exit_status, char *input_line, char **envp);
 
 char *clean_quotes(char *token);
 

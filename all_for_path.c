@@ -115,7 +115,6 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name)
 	if (cmd_args == NULL || cmd_args[0] == NULL)
 		return (0);
 
-	/* Direct paths */
 	if (cmd_args[0][0] == '/' ||
 	    (cmd_args[0][0] == '.' && cmd_args[0][1] == '/') ||
 	    (cmd_args[0][0] == '.' && cmd_args[0][1] == '.' &&
@@ -124,7 +123,6 @@ int find_and_execute(char **cmd_args, char **envp, char *prog_name)
 
 	path_env = get_env_value("PATH", envp);
 
-	/* PATH missing or empty => no search */
 	if (path_env == NULL || path_env[0] == '\0')
 	{
 		free(path_env);
