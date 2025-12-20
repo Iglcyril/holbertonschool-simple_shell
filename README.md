@@ -1,6 +1,7 @@
 # simple shell project
 
-![alt text](
+<img width="1024" height="1024" alt="a9591cb3-202e-4931-9d88-8de9376b9fde" src="https://github.com/user-attachments/assets/979565b7-02fc-4f40-81c2-05534eb407ed" />
+
 
 ## Simple Shell
 
