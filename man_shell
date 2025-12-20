@@ -1,0 +1,110 @@
+.TH SIMPLE_SHELL 1 "December 2025" "Simple Shell Manual"
+
+.SH NAME
+simple_shell \- a simple UNIX command line interpreter
+
+.SH SYNOPSIS
+.B simple_shell
+.br
+.B echo "command" | simple_shell
+
+.SH DESCRIPTION
+.B simple_shell
+is a basic UNIX command interpreter that reads commands from standard input or from a file and executes them. It is designed as a simplified version of the traditional sh shell.
+
+The shell operates in two modes:
+.TP
+.B Interactive mode
+Displays a prompt and waits for the user to type a command.
+.TP
+.B Non-interactive mode
+Reads commands from standard input without displaying a prompt.
+
+.SH INVOCATION
+In interactive mode, the shell displays the prompt
+.B "($) "
+and waits for user input. Commands are executed after pressing Enter.
+
+In non-interactive mode, commands can be piped to the shell:
+.br
+.B echo "/bin/ls" | ./hsh
+
+.SH COMMAND EXECUTION
+The shell locates commands in the following order:
+.TP
+1.
+Built-in commands (exit, env)
+.TP
+2.
+Absolute paths (/bin/ls)
+.TP
+3.
+Relative paths (./program)
+.TP
+4.
+Commands found in PATH directories
+
+.SH BUILT-IN COMMANDS
+.TP
+.B exit
+Exits the shell with the last command's exit status.
+.br
+Usage: exit
+.TP
+.B env
+Prints the current environment variables.
+.br
+Usage: env
+
+.SH EXAMPLES
+.TP
+Interactive mode:
+.nf
+@Username ➜ /workspaces/holbertonschool-simple_shell (dev) $ ./hsh 
+($) ls /var
+backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp  vscode-remote
+($) echo holberton
+holberton
+($) exit
+@Username ➜ /workspaces/holbertonschool-simple_shell (dev) $
+.fi
+
+.TP
+Non-interactive mode:
+.nf
+@Username ➜ /workspaces/holbertonschool-simple_shell (dev) $ ./hsh 
+($) /bin/ls /var | hsh
+
+backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp  vscode-remote
+($) exit
+@Username ➜ /workspaces/holbertonschool-simple_shell (dev) $
+.fi
+
+.SH EXIT STATUS
+The shell returns the exit status of the last executed command.
+.TP
+.B 0
+Successful execution
+.TP
+.B 127
+Command not found
+.TP
+.B 126
+Command found but not executable
+
+.SH ENVIRONMENT
+.TP
+.B PATH
+Colon-separated list of directories to search for commands.
+.TP
+.B All environment variables
+Accessible through the
+.B env
+built-in command.
+
+.SH RETURN VALUE
+The shell returns the exit status of the last command executed. If no command was executed, it returns 0.
+
+.SH AUTHORS
+Cyril Iglesias
+Lucas Lupon
