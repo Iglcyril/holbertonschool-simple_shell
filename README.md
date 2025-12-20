@@ -84,7 +84,9 @@ int token_count(const char *input_str, const char *delim);
 ## flowchart
 
 
+## Man simple shell
 
+![man_shell](https://github.com/Iglcyril/holbertonschool-simple_shell/blob/dev/man_shell)
 
 
 ## Compilation
