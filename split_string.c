@@ -11,7 +11,8 @@ char **split_string(char *input_str, char *delim)
 	char **tokens, *copy, *tok, *clean;
 	int count, i;
 
-	if (input_str == NULL || delim == NULL || *input_str == '\0' || *delim == '\0')
+	if (input_str == NULL || delim == NULL ||
+		*input_str == '\0' || *delim == '\0')
 		return (NULL);
 
 	count = token_count(input_str, delim);
