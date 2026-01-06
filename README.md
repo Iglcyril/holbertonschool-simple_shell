@@ -1,4 +1,4 @@
-# Simple shell project
+# Simple shell project🐚
 
 <img width="1024" height="1024" alt="a9591cb3-202e-4931-9d88-8de9376b9fde" src="https://github.com/user-attachments/assets/979565b7-02fc-4f40-81c2-05534eb407ed" />
 
@@ -33,7 +33,7 @@ Use system calls only when you need to (why?)
 ```
 
 
-##  Files description
+##  Files description🗂️
 
 File | Description | 
 ----------|-------------|
@@ -72,10 +72,7 @@ int token_count(const char *input_str, const char *delim);
 
 ```
 ## Flowchart
-<img width="1417" height="1366" alt="image" src="https://github.com/user-attachments/assets/009f0898-f8c0-4023-a6ae-7a74eef19e65" />
-
-
-## Man simple shell
+<img width="4684" height="5808" alt="image" src="https://github.com/user-attachments/assets/d9145292-d049-48ee-9080-046400803743" />
 
 ![man_shell](https://github.com/Iglcyril/holbertonschool-simple_shell/blob/dev/man_shell)
 
@@ -105,7 +102,7 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ./hsh
 ```
 
-## Test
+## Test🧪
 
 In interactive mode
 ```
