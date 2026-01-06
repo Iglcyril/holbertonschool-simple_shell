@@ -85,11 +85,22 @@ man ./man_shell
 ```
 
 
-## Compilation
-``` 
+## How to install the simple shell
+
+1-Create a folder.
+
+2-On your terminal copy and paste this command (you must be in the folder path) :
+```c
+git clone https://github.com/Iglcyril/holbertonschool-simple_shell.git
+```
+
+3-Open the repositorie.
+
+4-Compile with this command :
+ ```c
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
-### Execute
+5-Execute
 ```c
 ./hsh
 ```
@@ -146,7 +157,7 @@ backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp  vscode-remote
 ```
 ## Author
 
-```
-Cyril iglesias <iglcyril@gmail.com>
-Lupon Lucas <lucaslupon873@gmail.com>
+```c
+[Cyril iglesias](https://github.com/Iglcyril)
+[Lucas Lupon](https://github.com/nobulp?tab=repositories)
 ```
