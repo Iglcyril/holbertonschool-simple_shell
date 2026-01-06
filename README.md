@@ -3,15 +3,15 @@
 <img width="1024" height="1024" alt="a9591cb3-202e-4931-9d88-8de9376b9fde" src="https://github.com/user-attachments/assets/979565b7-02fc-4f40-81c2-05534eb407ed" />
 
 
-## Simple Shell
+## Simple Shell🐣
 
 A lightweight UNIX command line interpreter written in C that mimics the basic functionality. This project demonstrates fundamental concepts of process creation, system calls, and command parsing.
 
-## Overview
+## Overview🔍
 
 This shell provides a simple command-line interface where users can execute commands, navigate directories, and interact with the operating system. It handles both built-in commands and external programs found in the system PATH.
 
-## Requirements 
+## Requirements
 ```
 Allowed editors: vi, vim, emacs
 
@@ -49,7 +49,7 @@ strip_newline.c | program that removes the trailing newline character from a str
 token_count | program Count tokens in a string
  
 
-## Function we use
+## Function we use💁‍♂️
 
 All of this functions are in the shell.h file.
 ```c
@@ -71,8 +71,10 @@ void strip_newline(char *input_str, ssize_t *str_len);
 int token_count(const char *input_str, const char *delim);
 
 ```
-## Flowchart
+## Flowchart📜
 <img width="4684" height="5808" alt="image" src="https://github.com/user-attachments/assets/d9145292-d049-48ee-9080-046400803743" />
+
+## Man simple shell📖
 
 ![man_shell](https://github.com/Iglcyril/holbertonschool-simple_shell/blob/dev/man_shell)
 
@@ -82,7 +84,7 @@ man ./man_shell
 ```
 
 
-## How to install the simple shell
+## How to install our simple shell
 
 1-Create a folder.
 
@@ -127,7 +129,7 @@ backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp  vscode-remote
 ($) exit
 @Iglcyril ➜ /workspaces/holbertonschool-simple_shell (dev) $
 ```
-## Valgrind test
+## Valgrind test👨‍🔬
 
 ```
 ==2226== 
@@ -152,7 +154,7 @@ backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp  vscode-remote
 ==2226== For lists of detected and suppressed errors, rerun with: -s
 ==2226== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 ```
-## Author
+## Authors👨‍💻👨‍💻
 
 ```c
 [Cyril iglesias](https://github.com/Iglcyril)
