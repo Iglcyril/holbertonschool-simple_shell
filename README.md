@@ -1,4 +1,4 @@
-# simple shell project
+# Simple shell project
 
 <img width="1024" height="1024" alt="a9591cb3-202e-4931-9d88-8de9376b9fde" src="https://github.com/user-attachments/assets/979565b7-02fc-4f40-81c2-05534eb407ed" />
 
@@ -71,10 +71,18 @@ void strip_newline(char *input_str, ssize_t *str_len);
 int token_count(const char *input_str, const char *delim);
 
 ```
-## flowchart
+## Flowchart
+<img width="1417" height="1366" alt="image" src="https://github.com/user-attachments/assets/009f0898-f8c0-4023-a6ae-7a74eef19e65" />
 
 
+## Man simple shell
 
+![man_shell](https://github.com/Iglcyril/holbertonschool-simple_shell/blob/dev/man_shell)
+
+To see the manual :
+```bash
+man ./man_shell
+```
 
 
 ## Compilation
