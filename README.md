@@ -51,7 +51,7 @@ token_count | program Count tokens in a string
 
 ## <u>Functions we used<u>💁‍♂️
 
-All of this functions are in the shell.h file.
+All of these functions are in the shell.h file.
 ```c
 
 char *build_path(char *dir_path, char *cmd_name);
@@ -120,15 +120,9 @@ holberton
 
 In no interactive mode
 ```c
-@Iglcyril ➜ /workspaces/holbertonschool-simple_shell (dev) $ ./hsh 
-($) /bin/ls /var | hsh
-/bin/ls: cannot access '|': No such file or directory
- hsh
-
-/var:
-backups  cache  lib  local  lock  log  mail  opt  run  spool  tmp  vscode-remote
-($) exit
-@Iglcyril ➜ /workspaces/holbertonschool-simple_shell (dev) $
+@nobulp ➜ /workspaces/holbertonschool-simple_shell (dev) $ echo "ls" | ./hsh
+AUTHORS    all_for_path.c  clean_quote.c  free_array.c     hsh     man_shell  split_string.c   token_count.c
+README.md  builtin.c       executor.c     get_env_value.c  main.c  shell.h    strip_newline.c
 ```
 ## <u>Valgrind test<u>👨‍🔬
 
